@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
 import searchIcon from './black-24dp/1x/outline_search_black_24dp.png';
+import person from './person/1x/outline_person_black_24dp.png';
+import arrow from './person/arrow/1x/outline_expand_more_black_24dp.png';
 
 const Navbar = (props) => {
   const textInput = useRef(null);
@@ -16,12 +18,21 @@ const Navbar = (props) => {
           <img src={searchIcon} alt="search icon" />
         </div>
         <div>
-          <input className="searchInput" type="text" ref={textInput}></input>
+          <input
+            className="searchInput"
+            type="text"
+            placeholder="Search reddit"
+            ref={textInput}
+          ></input>
         </div>
       </div>
       <div className="flex">
-        <div className="login">Login</div>
-        <div className="signup">Signup</div>
+        <div className="login">Log In</div>
+        <div className="signup">Sign Up</div>
+        <div className="profile">
+          <img className="personIcon" src={person} alt="person" />
+          <img className="arrow" src={arrow} alt="expand more" />
+        </div>
       </div>
     </div>
   );

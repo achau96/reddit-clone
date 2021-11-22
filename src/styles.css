@@ -7,7 +7,11 @@
 body {
   background: #ddd;
 }
+
+/* ------------------ NAVBAR ------------------ */
 .navbar {
+  position: fixed;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -22,9 +26,11 @@ body {
 }
 
 .searchBar {
-  padding: 3px;
-  border: solid 1px black;
-  border-radius: 25px;
+  padding: 1px;
+  border: solid 1px rgb(201, 201, 201);
+  border-radius: 8px;
+  width: 500px;
+  background: rgb(231, 231, 231);
 }
 
 .icon {
@@ -33,15 +39,107 @@ body {
   color: gray;
 }
 
+.searchBar:hover {
+  border: solid 1.2px rgb(0, 89, 255);
+}
 .searchBar:focus-within {
-  border: solid 1px blue;
+  border: solid 1.2px rgb(0, 89, 255);
 }
 
-.searchInput {
-  outline: none;
-}
-
-.searchInput {
+.searchInput[type='text'] {
   border: none;
-  font-size: 18px;
+  font-size: 17px;
+  outline: none;
+  width: 450px;
+  background: rgb(231, 231, 231);
+}
+
+.navbar .login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid blue;
+  background: white;
+  color: blue;
+  font-size: 16px;
+  border-radius: 25px;
+  padding: 8px 20px;
+  margin: 4px;
+}
+
+.navbar .login:hover {
+  cursor: pointer;
+}
+
+.navbar .signup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid white;
+  background: blue;
+  color: white;
+  font-size: 16px;
+  border-radius: 25px;
+  padding: 8px 20px;
+  margin: 4px;
+}
+
+.navbar .signup:hover {
+  cursor: pointer;
+}
+
+.navbar .profile {
+  display: inline-block;
+  margin: 2px;
+}
+.navbar .profile:hover {
+  border: solid 1px grey;
+  cursor: pointer;
+}
+.navbar .profile .personIcon {
+  min-width: 30px;
+  height: auto;
+}
+.navbar .profile .arrow {
+  margin-left: -8px;
+}
+
+/* ------------------ NAVBAR ------------------ */
+
+/* ------------------ HOME------------------ */
+
+.home {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 700px;
+  background: cornsilk;
+  padding-top: 60px;
+}
+
+.home .trending {
+  align-self: flex-start;
+}
+
+/* ------------------ HOME ------------------ */
+
+/* For small phones */
+@media screen and (max-width: 800px) {
+  .navbar .login {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .navbar .signup {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .navbar .searchBar {
+    width: 250px;
+  }
+  .navbar .searchBar .searchInput[type='text'] {
+    width: 200px;
+  }
 }
