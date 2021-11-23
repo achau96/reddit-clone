@@ -1,7 +1,13 @@
+@font-face {
+  font-family: Roboto;
+  src: url('./Roboto/Roboto-Regular.ttf');
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Roboto;
 }
 
 body {
@@ -122,6 +128,11 @@ body {
 
 .home .trending {
   align-self: flex-start;
+}
+
+.home .container {
+  display: flex;
+  justify-content: space-around;
 }
 
 /* ------------------ HOME ------------------ */
