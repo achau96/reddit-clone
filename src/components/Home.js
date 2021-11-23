@@ -4,13 +4,23 @@ import { db } from '../firebase';
 import { collection, getDocs } from '@firebase/firestore';
 
 const Home = (props) => {
+  // useEffect(() => {
+  //   async function checkData() {
+  //     const info = await getDocs(
+  //       collection(db, 'posts/e0iFQGhh79XI1B1YVJkI/videos')
+  //     );
+  //     info.forEach((doc) => {
+  //       console.log(doc.data());
+  //     });
+  //   }
+  //   checkData();
+  // }, []);
+
   useEffect(() => {
     async function checkData() {
-      const info = await getDocs(
-        collection(db, 'posts/e0iFQGhh79XI1B1YVJkI/videos')
-      );
+      const info = await getDocs(collection(db, 'posts'));
       info.forEach((doc) => {
-        console.log(doc.data());
+        console.log(doc.id);
       });
     }
     checkData();
