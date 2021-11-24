@@ -1,3 +1,6 @@
+import React from 'react';
+import ComboBox from './ComboBox';
+
 const CreatePost = (title, user, description) => {
   const postFunction = () => {
     return { user, title, description, upvotes: 0, comments: [] };
@@ -16,6 +19,7 @@ const CreatePost = (title, user, description) => {
             marginBottom: '5px',
           }}
         />
+        <ComboBox />
         <input type="text" placeholder="Enter Title Here" />
       </div>
     </div>
