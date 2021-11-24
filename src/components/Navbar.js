@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import searchIcon from './black-24dp/1x/outline_search_black_24dp.png';
 import person from './person/1x/outline_person_black_24dp.png';
 import arrow from './person/arrow/1x/outline_expand_more_black_24dp.png';
+import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
   const textInput = useRef(null);
@@ -12,7 +13,9 @@ const Navbar = (props) => {
 
   return (
     <div className="navbar">
-      <div>Logo</div>
+      <Link to="/">
+        <div>Logo</div>
+      </Link>
       <div className="flex searchBar">
         <div className="icon" onClick={handleClick}>
           <img src={searchIcon} alt="search icon" />
