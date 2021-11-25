@@ -201,7 +201,7 @@ body {
 
 .post .inputBox .inputFooter {
   width: 100%;
-  background: wheat;
+  background: #eee;
   display: flex;
   justify-content: center;
   height: 30px;

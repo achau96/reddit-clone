@@ -1,13 +1,32 @@
+import React, { useState, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import { db } from '../firebase';
+import { collection, getDocs } from '@firebase/firestore';
 
 export default function ComboBox(props) {
+  const [subReddits, setSubreddits] = useState([]);
+
+  useEffect(() => {
+    async function checkData() {
+      const info = await getDocs(collection(db, 'posts'));
+      const list = [...subReddits];
+      info.forEach((doc) => {
+        list.push(doc.id);
+        console.log(doc.id);
+      });
+      setSubreddits(list);
+    }
+    checkData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Autocomplete
       onChange={(e, value) => props.handleChange(e, value)}
       disablePortal
       id="size-small-filled"
-      options={top100Films}
+      options={subReddits}
       size="small"
       sx={{
         width: 300,

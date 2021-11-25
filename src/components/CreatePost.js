@@ -14,8 +14,13 @@ const CreatePost = (title, user, description) => {
   });
 
   const handleChange = (e, value) => {
-    setOption(value);
+    setForm({ ...form, community: value });
   };
+
+  const handleChange2 = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
   return (
     <div className="post">
       <div className="left-side">
@@ -30,13 +35,21 @@ const CreatePost = (title, user, description) => {
           }}
         />
         <ComboBox handleChange={handleChange} />
-        {console.log(option)}
+        {console.log(form)}
         <div className="inputBox">
-          <input className="titleInput" type="text" placeholder="Title" />
+          <input
+            className="titleInput"
+            name="title"
+            type="text"
+            placeholder="Title"
+            onChange={handleChange2}
+          />
           <textarea
             className="inputText"
+            name="text"
             placeholder="Text (Optional)"
             rows={6}
+            onChange={handleChange2}
           />
           <hr
             style={{
@@ -59,7 +72,7 @@ const CreatePost = (title, user, description) => {
                 name="checked"
                 value="reply"
                 onChange={(e) => {
-                  setForm({ checked: !form.checked });
+                  setForm({ ...form, checked: !form.checked });
                   console.log(e.target.checked);
                 }}
                 defaultChecked={form.checked}
