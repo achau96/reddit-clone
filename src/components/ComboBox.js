@@ -1,13 +1,19 @@
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
-export default function ComboBox() {
+export default function ComboBox(props) {
   return (
     <Autocomplete
+      onChange={(e, value) => props.handleChange(e, value)}
       disablePortal
-      id="combo-box-demo"
+      id="size-small-filled"
       options={top100Films}
-      sx={{ width: 300, backgroundColor: 'white' }}
+      size="small"
+      sx={{
+        width: 300,
+        backgroundColor: 'white',
+        marginTop: '10px',
+      }}
       renderInput={(params) => <TextField {...params} label="Community" />}
     />
   );

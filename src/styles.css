@@ -155,7 +155,64 @@ body {
 }
 
 .post .left-side {
-  width: 450px;
+  width: 500px;
+}
+
+.post .inputBox {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 100%;
+  height: auto;
+  background: white;
+  border-radius: 10px;
+}
+
+.post .inputBox .titleInput[type='text'] {
+  border: solid 1px grey;
+  margin-top: 10px;
+  width: 90%;
+  font-size: 16px;
+  padding-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.post .inputBox .inputText {
+  resize: none;
+  font-size: 15px;
+  width: 90%;
+  padding: 8px 15px;
+  margin-top: 20px;
+}
+
+.post .inputBox .buttonRow {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+.post .inputBox .buttonRow .postButton {
+  padding: 5px;
+  background: white;
+  border-radius: 25px;
+}
+
+.post .inputBox .inputFooter {
+  width: 100%;
+  background: wheat;
+  display: flex;
+  justify-content: center;
+  height: 30px;
+}
+
+.post .inputBox .inputFooter .replyCheck {
+  width: 90%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 13px;
 }
 /* ------------------ Create Post ------------------ */
 
