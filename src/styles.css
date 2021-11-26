@@ -158,6 +158,20 @@ body {
   width: 500px;
 }
 
+.post .community {
+  display: flex;
+  align-items: center;
+}
+
+.post .community .addIcon {
+  margin-top: 3px;
+  margin-left: 5px;
+}
+
+.post .community .addIcon:hover {
+  cursor: pointer;
+}
+
 .post .inputBox {
   display: flex;
   align-items: center;
@@ -167,6 +181,34 @@ body {
   height: auto;
   background: white;
   border-radius: 10px;
+}
+
+.post .inputBox .postType {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  height: 30px;
+}
+
+.post .inputBox .postType .selectionBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 0;
+  flex-grow: 1;
+  height: 30px;
+  border: 1px solid grey;
+  background: #eee;
+}
+
+.post .inputBox .postType .selected {
+  border-bottom: 3px solid black;
+  background: rgb(160, 160, 160);
+}
+
+.post .inputBox .postType .selectionBox:hover {
+  cursor: pointer;
+  background: rgb(161, 161, 161);
 }
 
 .post .inputBox .titleInput[type='text'] {
@@ -179,8 +221,32 @@ body {
   padding-bottom: 5px;
 }
 
-.post .inputBox .inputText {
+.post .inputBox .tabBox {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.post .inputBox .tabBox .inputText {
   resize: none;
+  font-size: 15px;
+  width: 90%;
+  padding: 8px 15px;
+  margin-top: 20px;
+}
+
+.post .inputBox .tabBox .mediaInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  font-size: 15px;
+  width: 90%;
+  padding: 8px 15px;
+  margin-top: 20px;
+  border: 2px dashed black;
+}
+
+.post .inputBox .tabBox .linkInput {
   font-size: 15px;
   width: 90%;
   padding: 8px 15px;
@@ -195,8 +261,15 @@ body {
 }
 .post .inputBox .buttonRow .postButton {
   padding: 5px;
-  background: white;
+  background: rgb(0, 204, 255);
   border-radius: 25px;
+  color: white;
+  transition: 0.4s ease-in-out;
+}
+
+.post .inputBox .buttonRow .postButton:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 .post .inputBox .inputFooter {
@@ -240,5 +313,17 @@ body {
 
   .home .container .sidebar {
     display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .navbar .signup {
+    display: none;
+  }
+  .navbar .login {
+    display: none;
+  }
+  .post .left-side {
+    width: 320px;
   }
 }
