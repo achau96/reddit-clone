@@ -1,10 +1,10 @@
-const PostType = ({ handleChange2, selectedType }) => {
+const PostType = ({ handleMedia, handleChange2, selectedType }) => {
   return (
     <div className="tabBox">
       {selectedType === 'post' && (
         <textarea
           className="inputText"
-          name="text"
+          name="description"
           placeholder="Text (Optional)"
           rows={6}
           onChange={handleChange2}
@@ -16,6 +16,7 @@ const PostType = ({ handleChange2, selectedType }) => {
             type="file"
             name="file"
             onChange={(e) => {
+              handleMedia(e);
               console.log(e.target.files[0]);
             }}
           />

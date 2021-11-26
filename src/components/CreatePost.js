@@ -3,8 +3,9 @@ import ComboBox from './ComboBox';
 import addIcon from './icons/add/1x/outline_add_circle_black_24dp.png';
 import NewSub from './NewSub';
 import PostType from './PostType';
-import { db } from '../firebase';
+import { db, storage } from '../firebase';
 import { collection, getDocs } from '@firebase/firestore';
+import { ref, uploadBytes } from '@firebase/storage';
 
 const CreatePost = (title, user, description) => {
   const [selectedType, setSelectedType] = useState('post');
@@ -13,8 +14,9 @@ const CreatePost = (title, user, description) => {
   const [form, setForm] = useState({
     title: '',
     description: null,
+    file: null,
+    url: null,
     community: '',
-    flair: [],
     checked: true,
   });
 
@@ -22,8 +24,17 @@ const CreatePost = (title, user, description) => {
     setForm({ ...form, community: value });
   };
 
+  const resetValues = (name) => {
+    setForm({ ...form, description: null, file: null, url: null });
+    setSelectedType(name);
+  };
+
   const handleChange2 = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleMedia = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.files[0] });
   };
 
   useEffect(() => {
@@ -75,7 +86,7 @@ const CreatePost = (title, user, description) => {
               className={`selectionBox ${
                 selectedType === 'post' ? 'selected' : null
               }`}
-              onClick={() => setSelectedType('post')}
+              onClick={() => resetValues('post')}
             >
               Post
             </div>
@@ -83,7 +94,7 @@ const CreatePost = (title, user, description) => {
               className={`selectionBox ${
                 selectedType === 'media' ? 'selected' : null
               }`}
-              onClick={() => setSelectedType('media')}
+              onClick={() => resetValues('media')}
             >
               Images & Videos
             </div>
@@ -91,7 +102,7 @@ const CreatePost = (title, user, description) => {
               className={`selectionBox ${
                 selectedType === 'link' ? 'selected' : null
               }`}
-              onClick={() => setSelectedType('link')}
+              onClick={() => resetValues('link')}
             >
               Link
             </div>
@@ -110,7 +121,11 @@ const CreatePost = (title, user, description) => {
             rows={6}
             onChange={handleChange2}
           /> */}
-          <PostType handleChange2={handleChange2} selectedType={selectedType} />
+          <PostType
+            handleChange2={handleChange2}
+            handleMedia={handleMedia}
+            selectedType={selectedType}
+          />
           <hr
             style={{
               color: 'black',
@@ -124,6 +139,15 @@ const CreatePost = (title, user, description) => {
           <div className="buttonRow">
             <button
               onClick={() => {
+                if (form.file === null) {
+                  return;
+                } else {
+                  const imageRef = ref(storage, 'test1');
+                  console.log(imageRef);
+                  uploadBytes(imageRef, form.file).then((snapshot) => {
+                    console.log('Uploaded a blob or file!');
+                  });
+                }
                 console.log(form);
               }}
               className="postButton"
