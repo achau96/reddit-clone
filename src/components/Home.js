@@ -22,16 +22,11 @@ const Home = (props) => {
     checkData();
   }, []);
 
-  useEffect(() => {
-    async function getQuery() {
-      const postsRef = collection(db, 'posts');
-      const q = query(postsRef, where('community', '==', 'banana'));
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => {
-        console.log(doc.id);
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   async function getQuery() {
+  //     const postsRef = collection(db, 'posts');
+  //   }
+  // }, []);
 
   return (
     <div className="home">

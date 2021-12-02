@@ -41,7 +41,7 @@ const CreatePost = (title, user, description) => {
 
   useEffect(() => {
     async function checkData() {
-      const info = await getDocs(collection(db, 'posts'));
+      const info = await getDocs(collection(db, 'subreddits'));
       const list = [...subReddits];
       info.forEach((doc) => {
         list.push(doc.id);

@@ -6,9 +6,9 @@ import { ref, uploadBytes } from '@firebase/storage';
 const onSubmit = async (form, setForm, type) => {
   console.log(type);
   if (type === 'post' && form.community !== null) {
-    await setDoc(doc(db, 'subreddit', form.community, 'posts', uniqid()), {
-      form,
-    });
+    await setDoc(doc(db, 'posts', uniqid()), form);
+    await setDoc(doc(db, 'subreddits', form.community), {});
+    console.log('post uploaded!');
   }
   if (form.file === null) {
     return;
