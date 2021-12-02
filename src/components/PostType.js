@@ -15,6 +15,7 @@ const PostType = ({ handleMedia, handleChange2, selectedType }) => {
           <input
             type="file"
             name="file"
+            accept="image/*,video/*"
             onChange={(e) => {
               handleMedia(e);
               console.log(e.target.files[0]);
@@ -23,7 +24,13 @@ const PostType = ({ handleMedia, handleChange2, selectedType }) => {
         </div>
       )}
       {selectedType === 'link' && (
-        <input className="linkInput" type="url" placeholder="URL" />
+        <input
+          className="linkInput"
+          type="url"
+          name="url"
+          placeholder="URL"
+          onChange={handleChange2}
+        />
       )}
     </div>
   );

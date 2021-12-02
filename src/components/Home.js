@@ -1,22 +1,17 @@
 import React, { useEffect } from 'react';
 import Sidebar from './Sidebar';
 import { db } from '../firebase';
-import { collection, getDocs } from '@firebase/firestore';
+import {
+  collection,
+  getDocs,
+  where,
+  query,
+  QueryDocumentSnapshot,
+} from '@firebase/firestore';
 import { Link } from 'react-router-dom';
+import MiniCard from './MiniCard';
 
 const Home = (props) => {
-  // useEffect(() => {
-  //   async function checkData() {
-  //     const info = await getDocs(
-  //       collection(db, 'posts/e0iFQGhh79XI1B1YVJkI/videos')
-  //     );
-  //     info.forEach((doc) => {
-  //       console.log(doc.data());
-  //     });
-  //   }
-  //   checkData();
-  // }, []);
-
   useEffect(() => {
     async function checkData() {
       const info = await getDocs(collection(db, 'posts'));
@@ -27,6 +22,17 @@ const Home = (props) => {
     checkData();
   }, []);
 
+  useEffect(() => {
+    async function getQuery() {
+      const postsRef = collection(db, 'posts');
+      const q = query(postsRef, where('community', '==', 'banana'));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id);
+      });
+    }
+  }, []);
+
   return (
     <div className="home">
       <div className="trending">Popular Posts</div>
@@ -35,7 +41,7 @@ const Home = (props) => {
           <Link to="/create-post">
             <div className="createPost">Create Post</div>
           </Link>
-          <div>Hello</div>
+          <MiniCard />
         </div>
         <Sidebar />
       </div>

@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { db } from '../firebase';
-import { collection, getDocs } from '@firebase/firestore';
 
 export default function ComboBox({ handleChange, subReddits }) {
   return (

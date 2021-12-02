@@ -3,6 +3,7 @@ import ComboBox from './ComboBox';
 import addIcon from './icons/add/1x/outline_add_circle_black_24dp.png';
 import NewSub from './NewSub';
 import PostType from './PostType';
+import onSubmit from './onSubmit';
 import { db, storage } from '../firebase';
 import { collection, getDocs } from '@firebase/firestore';
 import { ref, uploadBytes } from '@firebase/storage';
@@ -15,6 +16,7 @@ const CreatePost = (title, user, description) => {
     title: '',
     description: null,
     file: null,
+    filePath: null,
     url: null,
     community: '',
     checked: true,
@@ -43,7 +45,6 @@ const CreatePost = (title, user, description) => {
       const list = [...subReddits];
       info.forEach((doc) => {
         list.push(doc.id);
-        console.log(doc.id);
       });
       setSubreddits(list);
     }
@@ -114,13 +115,6 @@ const CreatePost = (title, user, description) => {
             placeholder="Title"
             onChange={handleChange2}
           />
-          {/* <textarea
-            className="inputText"
-            name="text"
-            placeholder="Text (Optional)"
-            rows={6}
-            onChange={handleChange2}
-          /> */}
           <PostType
             handleChange2={handleChange2}
             handleMedia={handleMedia}
@@ -138,18 +132,7 @@ const CreatePost = (title, user, description) => {
           />
           <div className="buttonRow">
             <button
-              onClick={() => {
-                if (form.file === null) {
-                  return;
-                } else {
-                  const imageRef = ref(storage, 'test1');
-                  console.log(imageRef);
-                  uploadBytes(imageRef, form.file).then((snapshot) => {
-                    console.log('Uploaded a blob or file!');
-                  });
-                }
-                console.log(form);
-              }}
+              onClick={() => onSubmit(form, setForm, selectedType)}
               className="postButton"
             >
               POST
@@ -175,6 +158,7 @@ const CreatePost = (title, user, description) => {
           </div>
         </div>
       </div>
+      {console.log(form)}
     </div>
   );
 };

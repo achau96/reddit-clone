@@ -8,3 +8,4 @@ To apply everything I have learned to replicate my favourite social media websit
 
 1. Had to use "useRef" from react to create the focus input from search icon to input text.
 2. Learned about iframes to plug in youtube videos.
+3. Learned about files, file input, how to get the correct file data to upload onto storage. Limit to only images and videos.
